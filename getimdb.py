@@ -5,7 +5,6 @@ import requests
 def get_rank_type_str(rank_type):
     sort_options = ['&sort=rank%2Casc', 'sort=user_rating%2Cdesc']
     rank_str = sort_options[rank_type]
-    print(rank_str)
     return rank_str
    
 def get_url(base_url, rank_str):
@@ -18,7 +17,6 @@ def get_titles(url, n):
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36'
     }
     resp = requests.get(url, headers=headers)
-    print(resp.status_code)
     html = resp.text
     soup = BeautifulSoup(html, 'html.parser')
     divs = soup.find_all("div", class_='ipc-metadata-list-summary-item__c')[:n]
